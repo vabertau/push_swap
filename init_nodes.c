@@ -1,0 +1,184 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_nodes.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/04 15:54:58 by vabertau          #+#    #+#             */
+/*   Updated: 2024/01/05 19:07:26 by vabertau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+swp_list	*find_biggest(swp_list *a)
+{
+	swp_list	*ret;
+
+	ret = a;
+	while (a)
+	{
+		if (a->nbr > ret->nbr)
+			ret = a;
+		a = a->next;
+	}
+	return (ret);
+}
+
+int     find_target(swp_list *a, swp_list *b)
+{
+	swp_list	*tmp;
+
+	tmp = b;
+	while (a)
+	{
+		a->target = NULL;
+		b = tmp;
+		while (b)
+		{
+			if (b->nbr < a->nbr)
+			{
+				if (a->target == NULL)
+					a->target = b;
+				else if (b->nbr > a->target->nbr)
+					a->target = b;
+			}
+			b = b->next;
+		}
+		if (a->target == NULL)
+			a->target = find_biggest(tmp);
+		a = a->next;
+	}
+	return (0);
+}
+
+int	find_index(swp_list *a, swp_list *needle)
+{
+	int	ret;
+
+	ret = 0;
+	while (a)
+	{
+		if (a == needle)
+			return (ret);
+		ret++;
+		a = a->next;
+	}
+	return (-1);
+}
+
+int	above_median(swp_list *head, int index_topush)
+{
+	int	nb_is;
+
+	nb_is = howmany_instack(head);
+	if (index_topush <= (nb_is / 2))
+		return (0);
+	else
+		return (1);
+}
+
+// refaire le push cost en prenant en co;pte toutes les possibilites simultanees
+/*
+int	push_cost(swp_list *a, swp_list *b)
+{
+	int		index_topush;
+	int		index_target;
+	swp_list	*head;
+	
+	head = a;
+	while (a)
+	{
+		index_topush = find_index(head, a);
+		index_target = find_index(b, a->target);
+		if (above_median(head, index_topush))
+			a->push_cost = howmany_instack(a) - index_topush;
+		else
+			a->push_cost = index_topush;
+		if (above_median(b, index_target))
+			a->push_cost += howmany_instack(b) - index_target;
+		else
+			a->push_cost += index_target;
+		a = a->next;
+	}
+	return (0);
+}*/
+
+int     push_cost(swp_list *a, swp_list *b)
+{
+	swp_list	*to_push;
+
+	to_push = a;
+	while (to_push)
+	{
+		to_push->push_cost = pc_rrarb(a, to_push, b);
+		to_push = to_push->next;
+	}
+	return (0);
+}
+
+int	set_allindex(swp_list *a, swp_list *b)
+{
+	swp_list	*head_a;
+	swp_list	*head_b;
+
+	head_a = a;
+	head_b = b;
+	while (a)
+	{
+		a->index = find_index(head_a, a);
+		a = a->next;
+	}
+	while (b)
+	{
+                b->index = find_index(head_b, b);
+                b = b->next;
+        }
+	return (0);
+}
+
+int     init_nodes(swp_list **a, swp_list **b)
+{
+        find_target(*a, *b);
+	set_allindex(*a, *b);
+	push_cost(*a, *b);
+	return (0);
+}
+
+/* ================== TEST INIT_NODES ================*/
+
+#include <stdio.h>
+
+int     main(int argc, char **argv)
+{
+        swp_list        **a;
+        swp_list        **b;
+        swp_list        *tmp;
+
+        a = malloc(sizeof(swp_list *));
+        b = malloc(sizeof(swp_list *));
+        *a = NULL;
+        *b = NULL;
+
+        cr_stacks(a, b, argc, argv);
+        ft_lstadd_back(b, ft_lstnew(8));//adding elements in stack b for test
+        ft_lstadd_back(b, ft_lstnew(12));
+	ft_lstadd_back(b, ft_lstnew(15));
+	printf("%i args\n", argc); // to suppress
+        tmp = *a;
+	init_nodes(a, b);
+	printf("init_nodes executed\n");    
+	while (*a)
+        {
+                printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\n\n",
+				(*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost);//testing target nodes
+                *a = (*a)->next;
+        }
+        while (*b)
+        {
+                printf("number b = %li\n", (*b)->nbr);
+                *b = (*b)->next;
+        }	
+        return (0);
+}
