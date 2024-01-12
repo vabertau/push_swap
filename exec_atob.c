@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 15:35:01 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:39:37 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,15 +220,12 @@ int	exec_1atob(swp_list **a, swp_list **b)
 
 int	exec_allatob(swp_list **a, swp_list **b)
 {
-	swp_list	**tmp;
-
-	tmp = a;
         if (howmany_instack(*a) > 3)
                 pb(a, b);
         if (howmany_instack(*a) > 3)
                 pb(a, b);
-	while (howmany_instack(*tmp) > 3)
-		exec_1atob(tmp, b);
+	while (howmany_instack(*a) > 3)
+		exec_1atob(a, b);
 	return (0);
 }
 
