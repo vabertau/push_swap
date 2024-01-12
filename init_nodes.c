@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:54:58 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/05 19:07:26 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:51:58 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,23 @@ int     push_cost(swp_list *a, swp_list *b)
 	to_push = a;
 	while (to_push)
 	{
-		to_push->push_cost = pc_rrarb(a, to_push, b);
+		to_push->push_cost = pc_rarb(a, to_push, b);
+		to_push->op = 1;
+		if (pc_rrarrb(a, to_push, b) < to_push->push_cost)
+		{
+			to_push->push_cost = pc_rrarrb(a, to_push, b);
+			to_push->op = 2;
+		}
+		if (pc_rarrb(a, to_push, b) < to_push->push_cost)
+		{
+			to_push->push_cost = pc_rarrb(a, to_push, b);
+			to_push->op = 3;
+		}
+		if (pc_rrarb(a, to_push, b) < to_push->push_cost)
+		{
+			to_push->push_cost = pc_rrarb(a, to_push, b);
+			to_push->op = 4;
+		}
 		to_push = to_push->next;
 	}
 	return (0);
@@ -138,16 +154,36 @@ int	set_allindex(swp_list *a, swp_list *b)
 	return (0);
 }
 
+int	set_cheapest(swp_list *a, swp_list *b)
+{
+	swp_list	*tmp;
+
+	tmp = a;
+	a->is_cheapest = 1;
+	while (a->next)
+	{
+		if (a->next->push_cost < tmp->push_cost)
+		{
+			a->next->is_cheapest = 1;
+			tmp->is_cheapest = 0;
+			tmp = a->next;
+		}
+		a = a->next;
+	}
+	return (0);
+}
+
 int     init_nodes(swp_list **a, swp_list **b)
 {
         find_target(*a, *b);
 	set_allindex(*a, *b);
 	push_cost(*a, *b);
+	set_cheapest(*a, *b);
 	return (0);
 }
 
 /* ================== TEST INIT_NODES ================*/
-
+/*
 #include <stdio.h>
 
 int     main(int argc, char **argv)
@@ -168,11 +204,11 @@ int     main(int argc, char **argv)
 	printf("%i args\n", argc); // to suppress
         tmp = *a;
 	init_nodes(a, b);
+	exec_atob(a, b);
 	printf("init_nodes executed\n");    
 	while (*a)
         {
-                printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\n\n",
-				(*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost);//testing target nodes
+                printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\n\n", (*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost, (*a)->is_cheapest);//testing target nodes
                 *a = (*a)->next;
         }
         while (*b)
@@ -182,3 +218,4 @@ int     main(int argc, char **argv)
         }	
         return (0);
 }
+*/

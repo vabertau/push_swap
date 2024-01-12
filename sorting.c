@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:04:35 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/04 16:24:53 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:53:24 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	sort2(swp_list **a)
 {
 	if ((*a)->nbr > (*a)->next->nbr)
 	{
-		write(1, "sa\n", 3);
-		sab(a);
+		sab(a, 1);
 	}
 	return (0);
 }
@@ -40,27 +39,23 @@ int	sort3(swp_list **a)
 	//if (!((a->next->next->nbr >= a->next->nbr) && (a->next->next->nbr >= a->nbr)))
 	if (((*a)->nbr > (*a)->next->nbr) && ((*a)->nbr > (*a)->next->next->nbr))
 	{
-		write(1, "ra\n", 3);
-		rab(a);
+		rab(a, 1);
 	}
 	else if (((*a)->next->nbr > (*a)->nbr) && ((*a)->next->nbr > (*a)->next->next->nbr))
 	{
-		write(1, "rra\n", 4);
-		rrab(a);
+		rrab(a, 1);
 	}
 	else if ((*a)->nbr == (*a)->next->nbr)
 	{
 		if((*a)->nbr > (*a)->next->next->nbr)
 		{
-			write(1, "rra\n", 4);
-			rrab(a);
+			rrab(a, 1);
 			return (0);
 		}
 	}
 	if ((*a)->nbr > (*a)->next->nbr)
 	{
-		write(1, "sa\n", 3);
-		sab(a);
+		sab(a, 1);
 	}
 	return (0);
 }

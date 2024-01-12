@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:30 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/04 16:34:28 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:57:53 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 
 	if (check_input(argc, argv) == -1)
 	       return (-1);	// check input to complete
-	cr_stacks(a, b, argc, argv);	
+	cr_stacks(a, b, argc, argv);
 	printf("%i args\n", argc); // to suppress
 	//printf("sorted? = %i\n", stack_sorted(*a));//to supress
 	//sortall(a, b);	

@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:17:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/05 19:07:14 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:52:01 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	pc_rarb(swp_list *a, swp_list *to_push, swp_list *b)
 {
 	int	pc;
 
-	if (to_push->index <= a->target->index)
-		pc = a->target->index;
+	if (to_push->index <= to_push->target->index)
+		pc = to_push->target->index;
 	else
 		pc = to_push->index;
 	return (pc);
@@ -38,6 +38,8 @@ int     pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
 		tail_b = tail_b->next;
 	rev_indexa = tail_a->index - to_push->index;
 	rev_indexb = tail_b->index - to_push->target->index;
+	if ((to_push->index == 0) && (to_push->target->index == 0))
+		return (0);
 	if (to_push->index == 0)
 		return (rev_indexb + 1);
 	else if (to_push->target->index == 0)

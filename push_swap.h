@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/05 19:08:10 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:55:15 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <stdlib.h>
 #include "./libft/libft.h"
 
+// a->op : 1=rarb 2=rrarrb 3=rarrb 4=rrarb
+
 typedef struct	swp_list
 {
 	long			nbr;
@@ -26,6 +28,7 @@ typedef struct	swp_list
 	int			index;
 	int			push_cost;
 	int			is_cheapest;
+	int			op;
 }	swp_list;
 
 // Utils linked lists
@@ -47,11 +50,11 @@ int     init_nodes(swp_list **a, swp_list **b);
 
 // Operations executers
 
-int     rab(swp_list **a);
+int     rab(swp_list **a, int print);
 int     rr(swp_list **a, swp_list **b);
-int     rrab(swp_list **a);
+int     rrab(swp_list **a, int op);
 int     rrr(swp_list **a, swp_list **b);
-int     sab(swp_list **a);
+int     sab(swp_list **a, int op);
 int     ss(swp_list **a, swp_list **b);
 int     pb(swp_list **a, swp_list **b);
 int     pa(swp_list **a, swp_list **b);
