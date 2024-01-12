@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 14:07:47 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:35:01 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,16 +192,12 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
         pb(a, b);
 }
 
-/*
-int	exec_atob(swp_list **a, swp_list **b)
+
+int	exec_1atob(swp_list **a, swp_list **b)
 {
 	swp_list	**to_push;
 
 	to_push = a;
-	if (howmany_instack(*a) > 3)
-		pb(a, b);
-        if (howmany_instack(*a) > 3)
-                pb(a, b);
 	while (*to_push)
 	{
 		init_nodes(to_push, b);
@@ -210,16 +206,32 @@ int	exec_atob(swp_list **a, swp_list **b)
 			if ((*to_push)->op == 1)
 				exec_rarb(to_push, b);
 			if ((*to_push)->op == 2)
-				exec_rrarrb(to_push, b);
+				exec_rrarrb(a, to_push, b);
 			if ((*to_push)->op == 3)
-				exec_rarrb(to_push, b);
+				exec_rarrb(a, to_push, b);
 			if ((*to_push)->op == 4)
-				exec_rrarb(to_push, b);
+				exec_rrarb(a, to_push, b);
+			return (0);
 		}
 		*to_push = (*to_push)->next;
 	}
+	return (0);
 }
-*/
+
+int	exec_allatob(swp_list **a, swp_list **b)
+{
+	swp_list	**tmp;
+
+	tmp = a;
+        if (howmany_instack(*a) > 3)
+                pb(a, b);
+        if (howmany_instack(*a) > 3)
+                pb(a, b);
+	while (howmany_instack(*tmp) > 3)
+		exec_1atob(tmp, b);
+	return (0);
+}
+
 #include <stdio.h>
 
 int     main(int argc, char **argv)
@@ -243,7 +255,8 @@ int     main(int argc, char **argv)
 	//exec_rarrb(a, &((*a)->next->next), b);
 	//exec_rarrb(a, a, b);
         //exec_rrarb(a, a, b);
-	exec_rrarb(a, &((*a)->next->next), b);
+	//exec_rrarb(a, &((*a)->next->next), b);
+	exec_allatob(a, b);
 	printf("init_nodes executed\n");
         while (*a)
         {
