@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 15:39:37 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:34:43 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	{
                 while (i < (*to_push)->index)
                 {
-                        rab(to_push, 1);
+			rab(to_push, 1);
                         i++;
                 }
 	}
@@ -192,6 +192,7 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
         pb(a, b);
 }
 
+#include <stdio.h>
 
 int	exec_1atob(swp_list **a, swp_list **b)
 {
@@ -203,13 +204,17 @@ int	exec_1atob(swp_list **a, swp_list **b)
 		init_nodes(to_push, b);
 		if ((*to_push)->is_cheapest == 1)
 		{
+			printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
+					(*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
+					(*to_push)->target->index, (*to_push)->push_cost,
+					(*to_push)->is_cheapest, (*to_push)->op);
 			if ((*to_push)->op == 1)
 				exec_rarb(to_push, b);
-			if ((*to_push)->op == 2)
+			else if ((*to_push)->op == 2)
 				exec_rrarrb(a, to_push, b);
-			if ((*to_push)->op == 3)
+			else if ((*to_push)->op == 3)
 				exec_rarrb(a, to_push, b);
-			if ((*to_push)->op == 4)
+			else if ((*to_push)->op == 4)
 				exec_rrarb(a, to_push, b);
 			return (0);
 		}
@@ -245,9 +250,9 @@ int     main(int argc, char **argv)
         cr_stacks(a, b, argc, argv);
         printf("%i args\n", argc); // to suppress
         tmp = *a;
-        pb(a, b);
-        pb(a, b);		
-	init_nodes(a, b);
+        //pb(a, b);
+        //pb(a, b);		
+	//init_nodes(a, b);
         //exec_rrarrb(a, a, b);
 	//exec_rarrb(a, &((*a)->next->next), b);
 	//exec_rarrb(a, a, b);
