@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 17:50:23 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:12:59 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,10 +261,23 @@ int     main(int argc, char **argv)
         //exec_rrarb(a, a, b);
 	//exec_rrarb(a, &((*a)->next->next), b);
 	exec_allatob(a, b);
+	sort3(a);
 	exec_allbtoa(a, b);
 	minus_tobottom(a);
 	printf("\n====PROGRAM ENDED====\n");
         while (*a)
+        {
+                printf("number = %li:\nindexa = %i\n\n", (*a)->nbr, (*a)->index);//testing target nodes
+                *a = (*a)->next;
+        }	
+        while (*b)
+        {
+                printf("number b = %li\n", (*b)->nbr);
+                *b = (*b)->next;
+        }
+        return (0);
+/*
+	while (*a)
         {
                 printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\n\n", (*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost, (*a)->is_cheapest);//testing target nodes
                 *a = (*a)->next;
@@ -274,5 +287,5 @@ int     main(int argc, char **argv)
                 printf("number b = %li\n", (*b)->nbr);
                 *b = (*b)->next;
         }
-        return (0);
+        return (0);*/
 }

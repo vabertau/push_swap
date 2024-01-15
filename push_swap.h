@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 17:45:31 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:12:16 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		above_median(swp_list *head, int index_topush);
 // Sorting
 
 int     sortall(swp_list **a, swp_list **b);
-
+int     sort2(swp_list **a);
+int     sort3(swp_list **a);
 // Node init
 
 int     set_allindex(swp_list *a, swp_list *b);
