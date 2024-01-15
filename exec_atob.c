@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 18:17:53 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:24:51 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
+#include <stdio.h>
+
 int	exec_1atob(swp_list **a, swp_list **b)
 {
 	swp_list	**to_push;
@@ -204,6 +206,10 @@ int	exec_1atob(swp_list **a, swp_list **b)
 		init_nodes(to_push, b);
 		if ((*to_push)->is_cheapest == 1)
 		{
+                        printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
+                                        (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
+                                        (*to_push)->target->index, (*to_push)->push_cost,
+                                        (*to_push)->is_cheapest, (*to_push)->op);
 			if ((*to_push)->op == 1)
 				exec_rarb(to_push, b);
 			else if ((*to_push)->op == 2)
@@ -245,11 +251,11 @@ int     main(int argc, char **argv)
 
         cr_stacks(a, b, argc, argv);
 	exec_allatob(a, b);
-	sort3(a);
+	//sort3(a);
 	exec_allbtoa(a, b);
-	minus_tobottom(a);
-	//printf("\n====PROGRAM ENDED====\n");
-        /*while (*a)
+	//minus_tobottom(a);
+	printf("\n====PROGRAM ENDED====\n");
+        while (*a)
         {
                 printf("number = %li:\nindexa = %i\n\n", (*a)->nbr, (*a)->index);//testing target nodes
                 *a = (*a)->next;
@@ -259,7 +265,7 @@ int     main(int argc, char **argv)
                 printf("number b = %li\n", (*b)->nbr);
                 *b = (*b)->next;
         }
-        return (0);*/
+        return (0);
 /*
 	while (*a)
         {
