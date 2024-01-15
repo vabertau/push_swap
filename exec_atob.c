@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 19:55:59 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:09:41 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,10 +206,10 @@ int	exec_1atob(swp_list **a, swp_list **b)
 		init_nodes(to_push, b);
 		if ((*to_push)->is_cheapest == 1)
 		{
-                        printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
+/*                        printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
                                         (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
                                         (*to_push)->target->index, (*to_push)->push_cost,
-                                        (*to_push)->is_cheapest, (*to_push)->op);
+                                        (*to_push)->is_cheapest, (*to_push)->op);*/
 			if ((*to_push)->op == 1)
 				exec_rarb(to_push, b);
 			else if ((*to_push)->op == 2)
@@ -254,13 +254,13 @@ int     main(int argc, char **argv)
 	sort3(a);
 	exec_allbtoa(a, b);
         tmp = *a;
-	while (tmp)
+	/*while (tmp)
         {
                 printf("number bf mtb = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
                 tmp = (tmp)->next;
-        }
+        }*/
 	minus_tobottom(a);	
-	printf("\n====PROGRAM ENDED====\n");
+	/*printf("\n====PROGRAM ENDED====\n");
         while (*a)
         {
                 printf("number = %li:\nindexa = %i\n\n", (*a)->nbr, (*a)->index);//testing target nodes
@@ -270,7 +270,7 @@ int     main(int argc, char **argv)
         {
                 printf("number b = %li\n", (*b)->nbr);
                 *b = (*b)->next;
-        }
+        }*/
         return (0);
 /*
 	while (*a)
