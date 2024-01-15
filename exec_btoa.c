@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:53:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 16:53:35 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:20:39 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,10 +206,6 @@ int     exec_1btoa(swp_list **a, swp_list **b)
                 binit_nodes(a, to_push);
                 if ((*to_push)->is_cheapest == 1)
                 {
-                        printf("EXEC_BtoA\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
-                                        (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
-                                        (*to_push)->target->index, (*to_push)->push_cost,
-                                        (*to_push)->is_cheapest, (*to_push)->op);
                         if ((*to_push)->op == 1)
                                 bexec_rarb(to_push, a);
                         else if ((*to_push)->op == 2)

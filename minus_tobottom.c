@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:28:07 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 17:50:52 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:40:03 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	minus_tobottom(swp_list **a)
 		tail_a = tail_a->next;
 	index_lowest = find_index(*a, lowest);
 	rev_indexlowest = find_index(*a, tail_a) - lowest->index;
-	if (!above_median(lowest, index_lowest))
+	if (above_median(*a, index_lowest))
 	{
 		while (i < index_lowest)
 		{
@@ -37,7 +37,7 @@ int	minus_tobottom(swp_list **a)
 	}
 	else
 	{
-		while (i < rev_indexlowest)
+		while (i < rev_indexlowest + 1)
 		{
 			rrab(a, 1);
 			i++;
