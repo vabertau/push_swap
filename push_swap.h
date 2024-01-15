@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 12:55:15 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:45:01 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ void		ft_lstadd_back(swp_list **a, swp_list *new);
 // Sorting
 
 int     sortall(swp_list **a, swp_list **b);
+
+// Node init
+
+int     set_allindex(swp_list *a, swp_list *b);
+int     find_index(swp_list *a, swp_list *needle);
+int     push_cost(swp_list *a, swp_list *b);
 
 // Stack manipulation
 
