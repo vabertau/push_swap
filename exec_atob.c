@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 20:09:41 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:21:29 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	exec_rarb(swp_list **to_push, swp_list **b)
+int	exec_rarb(swp_list **a, swp_list **to_push, swp_list **b)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ int	exec_rarb(swp_list **to_push, swp_list **b)
 	{
 		while (i < (*to_push)->index)
 		{
-			rr(to_push, b);
+			rr(a, b);
 			i++;
 		}
 		while (i < (*to_push)->target->index)
@@ -29,21 +29,22 @@ int	exec_rarb(swp_list **to_push, swp_list **b)
 			rab(b, 2);
 			i++;
 		}
-		pb(to_push, b);
+		pb(a, b);
+		return (0); //useless
 	}
 	else
 	{
 		while (i < (*to_push)->target->index)
                 {
-                        rr(to_push, b);
+                        rr(a, b);
                         i++;
                 }
                 while (i < (*to_push)->index)
                 {
-                        rab(to_push, 1);
+                        rab(a, 1);
                         i++;
                 }
-		pb(to_push, b);
+		pb(a, b);
 	}
 	return (0);
 }
@@ -70,7 +71,7 @@ int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 		pb(a, b);
 		return (0);
 	}
-	if ((*to_push)->index == 0)
+	else if ((*to_push)->index == 0)
 	{
 		while (i < rev_indexb + 1)
 		{
@@ -80,7 +81,7 @@ int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 		pb(a, b);
 		return (0);
 	}
-	if ((*to_push)->target->index == 0)
+	else if ((*to_push)->target->index == 0)
 	{
                 while (i < rev_indexa + 1)
                 {
@@ -90,7 +91,7 @@ int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 		pb(a, b);
 		return (0);
 	}
-	if (pc_rrarrb(*a, *to_push, *b) == rev_indexa + 1)
+	else if (pc_rrarrb(*a, *to_push, *b) == rev_indexa + 1)
 	{
 		while (i < rev_indexb + 1)
 		{
@@ -135,7 +136,7 @@ int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	{
                 while (i < (*to_push)->index)
                 {
-			rab(to_push, 1);
+			rab(a, 1);
                         i++;
                 }
 	}
@@ -143,7 +144,7 @@ int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	{
 		while (i < (*to_push)->index)
 		{
-			rab(to_push, 1);
+			rab(a, 1);
 			i++;
 		}
 		i = 0;
@@ -186,7 +187,7 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
                 i = 0;
                 while (i < rev_indexa + 1)
                 {
-                        rrab(to_push, 1);
+                        rrab(a, 1);
                         i++;
                 }
         }
@@ -199,19 +200,26 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
 int	exec_1atob(swp_list **a, swp_list **b)
 {
 	swp_list	**to_push;
-
+	swp_list	*tmp; //to rm
 	to_push = a;
+	init_nodes(a,b);
 	while (*to_push)
 	{
-		init_nodes(to_push, b);
+		//init_nodes(a, b);
+        	tmp = *a;//to rm
+        	while (tmp)//to rm
+        	{
+                	printf("number XXX = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
+                	tmp = (tmp)->next;
+        	}
 		if ((*to_push)->is_cheapest == 1)
 		{
-/*                        printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
+                        printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
                                         (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
                                         (*to_push)->target->index, (*to_push)->push_cost,
-                                        (*to_push)->is_cheapest, (*to_push)->op);*/
+                                        (*to_push)->is_cheapest, (*to_push)->op);
 			if ((*to_push)->op == 1)
-				exec_rarb(to_push, b);
+				exec_rarb(a, to_push, b);
 			else if ((*to_push)->op == 2)
 				exec_rrarrb(a, to_push, b);
 			else if ((*to_push)->op == 3)
@@ -232,7 +240,10 @@ int	exec_allatob(swp_list **a, swp_list **b)
         if (howmany_instack(*a) > 3)
                 pb(a, b);
 	while (howmany_instack(*a) > 3)
+	{
+		printf("\nhm_is = %i\n", howmany_instack(*a));
 		exec_1atob(a, b);
+	}
 	return (0);
 }
 
@@ -251,16 +262,16 @@ int     main(int argc, char **argv)
 
         cr_stacks(a, b, argc, argv);
 	exec_allatob(a, b);
-	sort3(a);
-	exec_allbtoa(a, b);
         tmp = *a;
-	/*while (tmp)
+        while (tmp)
         {
-                printf("number bf mtb = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
+                printf("number bf s3 = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
                 tmp = (tmp)->next;
-        }*/
+        }
+	//sort3(a);
+	exec_allbtoa(a, b);
 	minus_tobottom(a);	
-	/*printf("\n====PROGRAM ENDED====\n");
+	printf("\n====PROGRAM ENDED====\n");
         while (*a)
         {
                 printf("number = %li:\nindexa = %i\n\n", (*a)->nbr, (*a)->index);//testing target nodes
@@ -270,7 +281,7 @@ int     main(int argc, char **argv)
         {
                 printf("number b = %li\n", (*b)->nbr);
                 *b = (*b)->next;
-        }*/
+        }
         return (0);
 /*
 	while (*a)
