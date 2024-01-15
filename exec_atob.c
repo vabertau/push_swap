@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 16:51:06 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:27:29 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,7 @@ int     main(int argc, char **argv)
 	//exec_rrarb(a, &((*a)->next->next), b);
 	exec_allatob(a, b);
 	exec_allbtoa(a, b);
+	minus_tobottom(a);
 	printf("\n====PROGRAM ENDED====\n");
         while (*a)
         {

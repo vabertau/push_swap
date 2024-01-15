@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 16:44:04 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:45:31 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	swp_list
 swp_list	*ft_lstlast(swp_list *a);
 swp_list	*ft_lstnew(long nbr);
 void		ft_lstadd_back(swp_list **a, swp_list *new);
+swp_list        *find_lowest(swp_list *a);
+int		above_median(swp_list *head, int index_topush);
 
 // Sorting
 
@@ -55,6 +57,7 @@ int     howmany_instack(swp_list *a);
 int     cr_stacks(swp_list **a, swp_list **b, int argc, char **argv);
 int     stack_sorted(swp_list *a);
 int     init_nodes(swp_list **a, swp_list **b);
+int     minus_tobottom(swp_list **a);
 
 // Operations executers
 
