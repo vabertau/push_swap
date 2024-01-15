@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/13 19:34:43 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:51:06 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
                 }
 	}
 	pb(a, b);
+	return (0);
 }
 
 int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
@@ -190,6 +191,7 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
                 }
         }
         pb(a, b);
+	return (0);
 }
 
 #include <stdio.h>
@@ -259,7 +261,8 @@ int     main(int argc, char **argv)
         //exec_rrarb(a, a, b);
 	//exec_rrarb(a, &((*a)->next->next), b);
 	exec_allatob(a, b);
-	printf("init_nodes executed\n");
+	exec_allbtoa(a, b);
+	printf("\n====PROGRAM ENDED====\n");
         while (*a)
         {
                 printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\n\n", (*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost, (*a)->is_cheapest);//testing target nodes

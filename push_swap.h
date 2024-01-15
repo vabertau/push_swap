@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:45:01 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:44:04 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int     sortall(swp_list **a, swp_list **b);
 int     set_allindex(swp_list *a, swp_list *b);
 int     find_index(swp_list *a, swp_list *needle);
 int     push_cost(swp_list *a, swp_list *b);
+int     binit_nodes(swp_list **a, swp_list **b);
+int     set_cheapest(swp_list *a, swp_list *b);
 
 // Stack manipulation
 
@@ -65,11 +67,18 @@ int     ss(swp_list **a, swp_list **b);
 int     pb(swp_list **a, swp_list **b);
 int     pa(swp_list **a, swp_list **b);
 
+int     exec_allbtoa(swp_list **a, swp_list **b);
+
 // Push_cost based on ops choice
 
 int     pc_rarb(swp_list *a, swp_list *to_push, swp_list *b);
 int     pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b);
 int	pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b);
 int	pc_rrarb(swp_list *a, swp_list *to_push, swp_list *b);
+
+int     bpc_rarb(swp_list *a, swp_list *to_push, swp_list *b);
+int     bpc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b);
+int     bpc_rarrb(swp_list *a, swp_list *to_push, swp_list *b);
+int     bpc_rrarb(swp_list *a, swp_list *to_push, swp_list *b);
 
 #endif

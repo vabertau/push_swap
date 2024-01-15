@@ -6,7 +6,7 @@
 #    By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/26 14:58:14 by vabertau          #+#    #+#              #
-#    Updated: 2024/01/12 11:58:29 by vabertau         ###   ########.fr        #
+#    Updated: 2024/01/15 16:42:51 by vabertau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ TESTOPS=test_ops
 
 FLAGS=-Wall -Werror -Wextra
 
-SRCS=sorting.c push_swap.c lst.c ops.c init_nodes.c cost_ops.c exec_atob.c
+SRCS=sorting.c push_swap.c lst.c ops.c init_nodes.c cost_ops.c exec_atob.c exec_btoa.c binit_nodes.c bcost_ops.c
 
 OBJS=$(SRCS:.c=.o)
 

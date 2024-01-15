@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:13:08 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:48:09 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:43:31 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,40 @@ int     bfind_target(swp_list *a, swp_list *b)
         return (0);
 }
 
-int     init_nodes(swp_list **a, swp_list **b)
+int     bpush_cost(swp_list *a, swp_list *b)
+{
+        swp_list        *to_push;
+
+        to_push = b;
+        while (to_push)
+        {
+                to_push->push_cost = bpc_rarb(a, to_push, b);
+                to_push->op = 1;
+                if (bpc_rrarrb(a, to_push, b) < to_push->push_cost)
+                {
+                        to_push->push_cost = bpc_rrarrb(a, to_push, b);
+                        to_push->op = 2;
+                }
+                if (bpc_rarrb(a, to_push, b) < to_push->push_cost)
+                {
+                        to_push->push_cost = bpc_rarrb(a, to_push, b);
+                        to_push->op = 3;
+                }
+                if (bpc_rrarb(a, to_push, b) < to_push->push_cost)
+                {
+                        to_push->push_cost = bpc_rrarb(a, to_push, b);
+                        to_push->op = 4;
+                }
+                to_push = to_push->next;
+        }
+        return (0);
+}
+
+int     binit_nodes(swp_list **a, swp_list **b)
 {
         bfind_target(*a, *b);
         set_allindex(*a, *b);
-        push_cost(*a, *b);
+        bpush_cost(*a, *b);
         set_cheapest(*b, *a);
         return (0);
 }
