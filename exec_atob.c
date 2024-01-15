@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 22:21:29 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:27:17 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,11 +199,11 @@ int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
 
 int	exec_1atob(swp_list **a, swp_list **b)
 {
-	swp_list	**to_push;
+	swp_list	*to_push;
 	swp_list	*tmp; //to rm
-	to_push = a;
+	to_push = *a;
 	init_nodes(a,b);
-	while (*to_push)
+	while (to_push)
 	{
 		//init_nodes(a, b);
         	tmp = *a;//to rm
@@ -212,23 +212,23 @@ int	exec_1atob(swp_list **a, swp_list **b)
                 	printf("number XXX = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
                 	tmp = (tmp)->next;
         	}
-		if ((*to_push)->is_cheapest == 1)
+		if (to_push->is_cheapest == 1)
 		{
                         printf("EXEC\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
-                                        (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
-                                        (*to_push)->target->index, (*to_push)->push_cost,
-                                        (*to_push)->is_cheapest, (*to_push)->op);
-			if ((*to_push)->op == 1)
-				exec_rarb(a, to_push, b);
-			else if ((*to_push)->op == 2)
-				exec_rrarrb(a, to_push, b);
-			else if ((*to_push)->op == 3)
-				exec_rarrb(a, to_push, b);
-			else if ((*to_push)->op == 4)
-				exec_rrarb(a, to_push, b);
+                                        to_push->nbr, (to_push)->target->nbr, (to_push)->index,
+                                        (to_push)->target->index, (to_push)->push_cost,
+                                        (to_push)->is_cheapest, (to_push)->op);
+			if (to_push->op == 1)
+				exec_rarb(a, &to_push, b);
+			else if (to_push->op == 2)
+				exec_rrarrb(a, &to_push, b);
+			else if (to_push->op == 3)
+				exec_rarrb(a, &to_push, b);
+			else if (to_push->op == 4)
+				exec_rrarb(a, &to_push, b);
 			return (0);
 		}
-		*to_push = (*to_push)->next;
+		to_push = to_push->next;
 	}
 	return (0);
 }
