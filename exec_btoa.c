@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:53:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 20:08:21 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:33:18 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     bexec_rarb(swp_list **to_push, swp_list **a)
+int     bexec_rarb(swp_list **b, swp_list **to_push, swp_list **a)
 {
         int     i;
 
@@ -21,7 +21,7 @@ int     bexec_rarb(swp_list **to_push, swp_list **a)
         {
                 while (i < (*to_push)->index)
                 {
-                        rr(to_push, a);
+                        rr(b, a);
                         i++;
                 }
                 while (i < (*to_push)->target->index)
@@ -29,21 +29,21 @@ int     bexec_rarb(swp_list **to_push, swp_list **a)
                         rab(a, 1);
                         i++;
                 }
-                pa(a, to_push);
+                pa(a, b);
         }
         else
         {
                 while (i < (*to_push)->target->index)
                 {
-                        rr(to_push, a);
+                        rr(b, a);
                         i++;
                 }
                 while (i < (*to_push)->index)
                 {
-                        rab(to_push, 2);
+                        rab(b, 2);
                         i++;
                 }
-                pa(a, to_push);
+                pa(a, b);
         }
         return (0);
 }
@@ -198,29 +198,29 @@ int     bexec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
 
 int     exec_1btoa(swp_list **a, swp_list **b)
 {
-        swp_list        **to_push;
+        swp_list        *to_push;
 
-        to_push = b;
-        while (*to_push)
+        to_push = *b;
+	binit_nodes(a, b);
+        while (to_push)
         {
-                binit_nodes(a, to_push);
-                if ((*to_push)->is_cheapest == 1)
+                if (to_push->is_cheapest == 1)
                 {
 /*                        printf("EXEC_BtoA\nnumber = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\nop = %i\n\n",
                                         (*to_push)->nbr, (*to_push)->target->nbr, (*to_push)->index,
                                         (*to_push)->target->index, (*to_push)->push_cost,
                                         (*to_push)->is_cheapest, (*to_push)->op);*/
-			if ((*to_push)->op == 1)
-                                bexec_rarb(to_push, a);
-                        else if ((*to_push)->op == 2)
-                                bexec_rrarrb(a, to_push, b);
-                        else if ((*to_push)->op == 3)
-                                bexec_rarrb(a, to_push, b);
-                        else if ((*to_push)->op == 4)
-                                bexec_rrarb(a, to_push, b);
+			if (to_push->op == 1)
+                                bexec_rarb(b, &to_push, a);
+                        else if (to_push->op == 2)
+                                bexec_rrarrb(a, &to_push, b);
+                        else if (to_push->op == 3)
+                                bexec_rarrb(a, &to_push, b);
+                        else if (to_push->op == 4)
+                                bexec_rrarb(a, &to_push, b);
                         return (0);
                 }
-                *to_push = (*to_push)->next;
+                to_push = to_push->next;
         }
         return (0);
 }
