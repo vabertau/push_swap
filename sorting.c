@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:04:35 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 12:53:24 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:31:56 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,6 @@ int	sort3(swp_list **a)
 	else if (((*a)->next->nbr > (*a)->nbr) && ((*a)->next->nbr > (*a)->next->next->nbr))
 	{
 		rrab(a, 1);
-	}
-	else if ((*a)->nbr == (*a)->next->nbr)
-	{
-		if((*a)->nbr > (*a)->next->next->nbr)
-		{
-			rrab(a, 1);
-			return (0);
-		}
 	}
 	if ((*a)->nbr > (*a)->next->nbr)
 	{

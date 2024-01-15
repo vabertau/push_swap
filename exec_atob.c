@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 19:24:51 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:55:59 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,9 +251,15 @@ int     main(int argc, char **argv)
 
         cr_stacks(a, b, argc, argv);
 	exec_allatob(a, b);
-	//sort3(a);
+	sort3(a);
 	exec_allbtoa(a, b);
-	//minus_tobottom(a);
+        tmp = *a;
+	while (tmp)
+        {
+                printf("number bf mtb = %li:\nindexa = %i\n\n", (tmp)->nbr, (tmp)->index);//testing target nodes
+                tmp = (tmp)->next;
+        }
+	minus_tobottom(a);	
 	printf("\n====PROGRAM ENDED====\n");
         while (*a)
         {

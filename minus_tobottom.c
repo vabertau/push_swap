@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:28:07 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 18:40:03 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:02:36 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ int	minus_tobottom(swp_list **a)
 	int		index_lowest;
 	int		rev_indexlowest;
 
+	init_nodes(a, a);
 	lowest = find_lowest(*a);
+	//printf("lowest = %li", lowest->nbr);
 	i = 0;
 	tail_a = *a;
 	while (tail_a->next)
 		tail_a = tail_a->next;
 	index_lowest = find_index(*a, lowest);
 	rev_indexlowest = find_index(*a, tail_a) - lowest->index;
-	if (above_median(*a, index_lowest))
+	//printf("index_lowest = %i, rev_indexlowest = %i, tail_a = %li", index_lowest, rev_indexlowest, tail_a->nbr);
+	if (above_median(*a, index_lowest) == 0)
 	{
 		while (i < index_lowest)
 		{
