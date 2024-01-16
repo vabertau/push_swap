@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 18:12:52 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:25:51 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int     find_index(swp_list *a, swp_list *needle);
 int     push_cost(swp_list *a, swp_list *b);
 int     binit_nodes(swp_list **a, swp_list **b);
 int     set_cheapest(swp_list *a, swp_list *b);
-
+int     get_revindex(swp_list **a, swp_list **to_push);
 // Stack manipulation
 
 int     howmany_instack(swp_list *a);
@@ -82,6 +82,7 @@ int     exec_rarb(swp_list **a, swp_list **to_push, swp_list **b);
 int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b);
 int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b);
 int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b);
+int     bexec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b);
 
 // Push_cost based on ops choice
 

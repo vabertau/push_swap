@@ -6,49 +6,49 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:53:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 22:33:18 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:22:10 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     bexec_rarb(swp_list **b, swp_list **to_push, swp_list **a)
+int	bexec_rarb(swp_list **b, swp_list **to_push, swp_list **a)
 {
-        int     i;
+	int	i;
 
-        i = 0;
-        if ((*to_push)->index <= (*to_push)->target->index)
-        {
-                while (i < (*to_push)->index)
-                {
-                        rr(b, a);
-                        i++;
-                }
-                while (i < (*to_push)->target->index)
-                {
-                        rab(a, 1);
-                        i++;
-                }
-                pa(a, b);
-        }
-        else
-        {
-                while (i < (*to_push)->target->index)
-                {
-                        rr(b, a);
-                        i++;
-                }
-                while (i < (*to_push)->index)
-                {
-                        rab(b, 2);
-                        i++;
-                }
-                pa(a, b);
-        }
-        return (0);
+	i = 0;
+	if ((*to_push)->index <= (*to_push)->target->index)
+	{
+		while (i < (*to_push)->index)
+		{
+			rr(b, a);
+			i++;
+		}
+		while (i < (*to_push)->target->index)
+		{
+			rab(a, 1);
+			i++;
+		}
+		pa(a, b);
+	}
+	else
+	{
+		while (i < (*to_push)->target->index)
+		{
+			rr(b, a);
+			i++;
+		}
+		while (i < (*to_push)->index)
+		{
+			rab(b, 2);
+			i++;
+		}
+		pa(a, b);
+	}
+	return (0);
 }
-
-int     bexec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+/*
+int	bexec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 {
         int     i;
         swp_list        *tail_a;
@@ -119,7 +119,7 @@ int     bexec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
         pa(a, b);
         return (0);
 }
-
+*/
 int     bexec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
 {
         swp_list        *tail_b;
