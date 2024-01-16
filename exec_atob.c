@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 15:13:13 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:39:04 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,95 @@ int	exec_rarb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
+int	index00_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+{
+	if ((*to_push)->index == 0 && (*to_push)->target->index == 0)
+        {
+                pb(a, b); 
+                return (1);
+        }
+	return (0);
+}
+
+int     index01_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+{
+	int	i;
+	int	rev_indexb;
+	swp_list	*tail_b;
+	
+	i = 0;
+        tail_b = *b;
+	while (tail_b->next)
+		tail_b = tail_b->next;
+	rev_indexb = tail_b->index - (*to_push)->target->index;
+	if ((*to_push)->index == 0)
+        {
+                while (i < rev_indexb + 1)
+                {
+                        rrab(b, 2);
+                        i++;
+                }
+                pb(a, b);
+                return (1);
+        }
+	return (0);
+}
+
+int     index10_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+{
+	int	i;
+	int	rev_indexa;
+        swp_list	*tail_a;
+
+        i = 0;
+        tail_a = *a;
+        while (tail_a->next)
+                tail_a = tail_a->next;
+	rev_indexa = tail_a->index - (*to_push)->index;
+	if ((*to_push)->target->index == 0)
+        {
+                while (i < rev_indexa + 1)
+                {
+                        rrab(a, 1);
+                        i++;
+                }
+                pb(a, b);
+                return (1);
+        }
+	return (0);
+}
+
+int	get_revindex(swp_list **a, swp_list **to_push)
+{
+	swp_list        *tail_a;
+
+	tail_a = *a;
+	while (tail_a->next)
+                tail_a = tail_a->next;
+	return (tail_a->index - (*to_push)->index);
+}
+
 int	exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 {
 	int			i;
-	swp_list	*tail_a;
 	swp_list	*tail_b;
 	int			rev_indexa;
 	int			rev_indexb;
 
-	tail_a = *a;
 	tail_b = *b;
 	i = 0;
-	while (tail_a->next)
-		tail_a = tail_a->next;
 	while (tail_b->next)
 		tail_b = tail_b->next;
-	rev_indexa = tail_a->index - (*to_push)->index;
+	rev_indexa = get_revindex(a, to_push);
 	rev_indexb = tail_b->index - (*to_push)->target->index;
-	if ((*to_push)->index == 0 && (*to_push)->target->index == 0)
+	if (index00_rrarrb(a, to_push, b))
+		return (0);
+	/*if ((*to_push)->index == 0 && (*to_push)->target->index == 0)
 	{
 		pb(a, b);
 		return (0);
-	}
-	else if ((*to_push)->index == 0)
+	}*/
+	/*else if ((*to_push)->index == 0)
 	{
 		while (i < rev_indexb + 1)
 		{
@@ -79,8 +145,13 @@ int	exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 		}
 		pb(a, b);
 		return (0);
-	}
-	else if ((*to_push)->target->index == 0)
+	}*/
+	else if (index01_rrarrb(a, to_push, b))
+		return (0);
+	else if (index10_rrarrb(a, to_push, b))
+                return (0);
+
+	/*else if ((*to_push)->target->index == 0)
 	{
 		while (i < rev_indexa + 1)
 		{
@@ -89,7 +160,7 @@ int	exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 		}
 		pb(a, b);
 		return (0);
-	}
+	}*/
 	else if (pc_rrarrb(*a, *to_push, *b) == rev_indexa + 1)
 	{
 		while (i < rev_indexb + 1)
