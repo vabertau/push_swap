@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 15:16:13 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:12:52 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int     ss(swp_list **a, swp_list **b);
 int     pb(swp_list **a, swp_list **b);
 int     pa(swp_list **a, swp_list **b);
 
+int     exec_allatob(swp_list **a, swp_list **b);
 int     exec_allbtoa(swp_list **a, swp_list **b);
 int     exec_rarb(swp_list **a, swp_list **to_push, swp_list **b);
 int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b);
