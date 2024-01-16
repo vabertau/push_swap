@@ -6,37 +6,11 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 11:39:30 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:08:14 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int     ft_atoi(const char *nptr)
-{
-        int     i;
-        int     ret;
-        int     sign;
-
-        i = 0;
-        ret = 0;
-        sign = 1;
-        while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
-                i++;
-        if (nptr[i] == '+')
-                i++;
-        else if (nptr[i] == '-')
-        {
-                sign *= -1;
-                i++;
-        }
-        while (nptr[i] >= '0' && nptr[i] <= '9')
-        {
-                ret = ret * 10 + nptr[i] - 48;
-                i++;
-        }
-        return (ret * sign);
-}
 
 int	duplicates(char **splitted)
 {
@@ -50,7 +24,30 @@ int	duplicates(char **splitted)
 		j = i + 1;
 		while (splitted[j])
 		{
-			if (atoi(splitted[i]) == atoi(splitted[j]))
+			if (ft_atoi(splitted[i]) == ft_atoi(splitted[j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	error_notint(char **splitted)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (splitted[i])
+	{
+		j = 0;
+		while (splitted[i][j])
+		{
+			if (!(splitted[i][j] >= '0' && splitted[i][j] <= '9')
+					&& splitted[i][j] != ' ' && splitted[i][j] != '-'
+						&& splitted[i][j] != '+')
 				return (1);
 			j++;
 		}
@@ -65,7 +62,7 @@ int	parsing(int argc, char **argv)
 	int	error;
 
 	error = 0;
-	if (argc == 1 || !argv[1])
+	if (argc == 1)
 	{
 		write(2, "Error\n", 6);
 		return (-1);
@@ -74,12 +71,12 @@ int	parsing(int argc, char **argv)
                 splitted = ft_split(argv[1], 2);
 	if (argc == 2)
 	{
-		if (duplicates(splitted))
+		if (duplicates(splitted) || error_notint(splitted))
 			error = 1;
 	}
 	else
 	{
-		if (duplicates(argv))
+		if (duplicates(&(argv[1])) || error_notint(&(argv[1])))
 			error = 1;
 	}
 	free (splitted);
