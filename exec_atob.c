@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:14:48 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 22:37:23 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:41:18 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,8 +246,15 @@ int     main(int argc, char **argv)
         b = malloc(sizeof(swp_list *));
         *a = NULL;
         *b = NULL;
-
+	
+	//if (parsing(argc, argv) == -1)
+	//	return (-1);
         cr_stacks(a, b, argc, argv);
+	if (howmany_instack(*a) == 2)
+	{
+		sort2(a);
+		return (0);
+	}
 	exec_allatob(a, b);
         tmp = *a;
         /*while (tmp)

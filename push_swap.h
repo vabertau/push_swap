@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/15 18:12:16 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:40:12 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ swp_list	*ft_lstnew(long nbr);
 void		ft_lstadd_back(swp_list **a, swp_list *new);
 swp_list        *find_lowest(swp_list *a);
 int		above_median(swp_list *head, int index_topush);
+
+// Parsing
+
+int     parsing(int argc, char **argv);
 
 // Sorting
 
