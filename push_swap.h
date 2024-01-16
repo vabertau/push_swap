@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:08:55 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:50:13 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int     set_cheapest(swp_list *a, swp_list *b);
 int		get_revindex(swp_list **a, swp_list **to_push);
 swp_list        *find_biggest(swp_list *a);
 int		find_index(swp_list *a, swp_list *needle);
+int		ft_atol(const char *nptr);
+int	howmany_instack(swp_list *a);
+
 // Stack manipulation
 
 int     howmany_instack(swp_list *a);

@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 12:35:03 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:40:29 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	error_notint(char **splitted)
 	while (splitted[i])
 	{
 		j = 0;
-                if (splitted[i][0] == '\0')
-                        return (1);
+		if (splitted[i][0] == '\0')
+			return (1);
 		while (splitted[i][j])
 		{
 			if (!(splitted[i][j] >= '0' && splitted[i][j] <= '9')
@@ -56,32 +56,6 @@ int	error_notint(char **splitted)
 		i++;
 	}
 	return (0);
-}
-
-int     ft_atol(const char *nptr)
-{
-        long long	i;
-        long long	ret;
-        int		sign;
-
-        i = 0;
-        ret = 0;
-        sign = 1;
-        while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
-                i++;
-        if (nptr[i] == '+')
-                i++;
-        else if (nptr[i] == '-')
-        {
-                sign *= -1;
-                i++;
-        }
-        while (nptr[i] >= '0' && nptr[i] <= '9')
-        {
-                ret = ret * 10 + nptr[i] - 48;
-                i++;
-        }
-        return (ret * sign);
 }
 
 int	overflow(char **splitted)
@@ -98,41 +72,49 @@ int	overflow(char **splitted)
 	return (0);
 }
 
-int	parsing(int argc, char **argv)
+int	check_1argorempty(int argc, char **argv)
 {
-	char	**splitted;
-	int	error;
-
-	error = 0;
 	if (argc == 1)
 	{
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-        if (argc == 2)
+	if (argc == 2)
 	{
 		if (argv[1][0] == '\0')
 		{
-                	write(2, "Error\n", 6); 
-                	return (-1);
+			write(2, "Error\n", 6);
+			return (-1);
 		}
 	}
+	return (0);
+}
+
+int	parsing(int argc, char **argv)
+{
+	char	**splitted;
+	int		error;
+
+	error = 0;
+	if (check_1argorempty(argc, argv) == -1)
+		return (-1);
 	splitted = ft_split(argv[1], 2);
 	if (argc == 2)
 	{
-		if (duplicates(splitted) || error_notint(splitted) || overflow(splitted))
+		if (duplicates(splitted) || error_notint(splitted)
+			|| overflow(splitted))
 			error = 1;
 	}
 	else
 	{
-		if (duplicates(&(argv[1])) || error_notint(&(argv[1])) || overflow(&argv[1]))
+		if (duplicates(&(argv[1])) || error_notint(&(argv[1]))
+			|| overflow(&argv[1]))
 			error = 1;
 	}
-	free (splitted);
 	if (error == 1)
 	{
-		write(2, "Error\n",6);
-		return (-1);
+		write(2, "Error\n", 6);
+		return (free(splitted), -1);
 	}
-	return (0);
+	return (free(splitted), 0);
 }

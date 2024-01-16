@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:30 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 11:57:53 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:44:59 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 #include <stdio.h>
 
-char    **ft_split(char const *s, char c);
-
 int	check_input(int argc, char **argv)
 {
 	if (argc == 1)
-		return(write(2, "Error \n", 7), -1);
+		return (write(2, "Error \n", 7), -1);
 	return (0);
 }
 
@@ -28,8 +26,7 @@ void	free_tabs(char **split_sep, long *sep_long, char **argv)
 	int	i;
 
 	i = 0;
-
-	if (split_sep != &(argv[1])) // = if split_sep has been malloc with split
+	if (split_sep != &(argv[1]))
 	{
 		while (split_sep[i])
 		{
@@ -43,29 +40,29 @@ void	free_tabs(char **split_sep, long *sep_long, char **argv)
 
 int	cr_stacks(swp_list **a, swp_list **b, int argc, char **argv)
 {
-        char    **split_sep;
-        long    *sep_long;
-        int     i;  
-        int     nb_arg;
+	char	**split_sep;
+	long	*sep_long;
+	int		i;
+	int		nb_arg;
 
-        i = 0;
-        nb_arg = 0;
-        if (argc == 2)
-                split_sep = ft_split(argv[1], ' ');
-        else
-                split_sep = &(argv[1]);
+	i = 0;
+	nb_arg = 0;
+	if (argc == 2)
+		split_sep = ft_split(argv[1], ' ');
+	else
+		split_sep = &(argv[1]);
 	while (split_sep[nb_arg])
 		nb_arg++;
-        sep_long = malloc(sizeof(long) * nb_arg);
-        if (!sep_long)
-		return (-1); //protection à ramener dans main
+	sep_long = malloc(sizeof(long) * nb_arg);
+	if (!sep_long)
+		return (-1);
 	while (split_sep[i])
 	{	
-                sep_long[i] = atoi(split_sep[i]);
+		sep_long[i] = atoi(split_sep[i]);
 		ft_lstadd_back(a, ft_lstnew(sep_long[i]));
 		i++;
-        }   
-	return(free_tabs(split_sep, sep_long, argv), 0);
+	}
+	return (free_tabs(split_sep, sep_long, argv), 0);
 }
 /*
 int	main(int argc, char **argv)
