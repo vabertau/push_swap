@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 11:40:12 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:16:13 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int     parsing(int argc, char **argv);
 int     sortall(swp_list **a, swp_list **b);
 int     sort2(swp_list **a);
 int     sort3(swp_list **a);
+
 // Node init
 
 int     set_allindex(swp_list *a, swp_list *b);
@@ -76,6 +77,10 @@ int     pb(swp_list **a, swp_list **b);
 int     pa(swp_list **a, swp_list **b);
 
 int     exec_allbtoa(swp_list **a, swp_list **b);
+int     exec_rarb(swp_list **a, swp_list **to_push, swp_list **b);
+int     exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b);
+int     exec_rarrb(swp_list **a, swp_list **to_push, swp_list **b);
+int     exec_rrarb(swp_list **a, swp_list **to_push, swp_list **b);
 
 // Push_cost based on ops choice
 

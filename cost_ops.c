@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:17:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 13:52:01 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:55:33 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	pc_rarb(swp_list *a, swp_list *to_push, swp_list *b)
 	return (pc);
 }
 
-int     pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
 {
 	swp_list	*tail_a;
 	swp_list	*tail_b;
-	int		rev_indexa;
-	int		rev_indexb;
+	int			rev_indexa;
+	int			rev_indexb;
 
 	tail_a = a;
 	tail_b = b;
@@ -50,15 +50,15 @@ int     pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
 		return (rev_indexb + 1);
 }
 
-int     pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b)
 {
-	int	rev_indexb;
-	swp_list        *tail_b;
+	int			rev_indexb;
+	swp_list	*tail_b;
 
 	tail_b = b;
 	while (tail_b->next)
 		tail_b = tail_b->next;
-        rev_indexb = tail_b->index - to_push->target->index;
+	rev_indexb = tail_b->index - to_push->target->index;
 	if (to_push->target->index == 0)
 		return (to_push->index);
 	return (to_push->index + rev_indexb + 1);
@@ -66,14 +66,14 @@ int     pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b)
 
 int	pc_rrarb(swp_list *a, swp_list *to_push, swp_list *b)
 {
-	int     rev_indexa;
-	swp_list        *tail_a;
+	int			rev_indexa;
+	swp_list	*tail_a;
 
 	tail_a = a;
 	while (tail_a->next)
 		tail_a = tail_a->next;
-        rev_indexa = tail_a->index - to_push->index;
-        if (to_push->index == 0)
-                return (to_push->target->index);
-        return (to_push->target->index + rev_indexa + 1);
+	rev_indexa = tail_a->index - to_push->index;
+	if (to_push->index == 0)
+		return (to_push->target->index);
+	return (to_push->target->index + rev_indexa + 1);
 }
