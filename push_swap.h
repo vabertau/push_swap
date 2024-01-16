@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 18:25:51 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:08:55 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ int     sort3(swp_list **a);
 // Node init
 
 int     set_allindex(swp_list *a, swp_list *b);
-int     find_index(swp_list *a, swp_list *needle);
 int     push_cost(swp_list *a, swp_list *b);
 int     binit_nodes(swp_list **a, swp_list **b);
 int     set_cheapest(swp_list *a, swp_list *b);
-int     get_revindex(swp_list **a, swp_list **to_push);
+
+// Utils
+
+int		get_revindex(swp_list **a, swp_list **to_push);
+swp_list        *find_biggest(swp_list *a);
+int		find_index(swp_list *a, swp_list *needle);
 // Stack manipulation
 
 int     howmany_instack(swp_list *a);

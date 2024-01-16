@@ -6,27 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:54:58 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/12 11:51:58 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:10:40 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-swp_list	*find_biggest(swp_list *a)
-{
-	swp_list	*ret;
-
-	ret = a;
-	while (a)
-	{
-		if (a->nbr > ret->nbr)
-			ret = a;
-		a = a->next;
-	}
-	return (ret);
-}
-
-int     find_target(swp_list *a, swp_list *b)
+int	find_target(swp_list *a, swp_list *b)
 {
 	swp_list	*tmp;
 
@@ -53,59 +39,7 @@ int     find_target(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	find_index(swp_list *a, swp_list *needle)
-{
-	int	ret;
-
-	ret = 0;
-	while (a)
-	{
-		if (a == needle)
-			return (ret);
-		ret++;
-		a = a->next;
-	}
-	return (-1);
-}
-
-int	above_median(swp_list *head, int index_topush)
-{
-	int	nb_is;
-
-	nb_is = howmany_instack(head);
-	if (index_topush <= (nb_is / 2))
-		return (0);
-	else
-		return (1);
-}
-
-// refaire le push cost en prenant en co;pte toutes les possibilites simultanees
-/*
 int	push_cost(swp_list *a, swp_list *b)
-{
-	int		index_topush;
-	int		index_target;
-	swp_list	*head;
-	
-	head = a;
-	while (a)
-	{
-		index_topush = find_index(head, a);
-		index_target = find_index(b, a->target);
-		if (above_median(head, index_topush))
-			a->push_cost = howmany_instack(a) - index_topush;
-		else
-			a->push_cost = index_topush;
-		if (above_median(b, index_target))
-			a->push_cost += howmany_instack(b) - index_target;
-		else
-			a->push_cost += index_target;
-		a = a->next;
-	}
-	return (0);
-}*/
-
-int     push_cost(swp_list *a, swp_list *b)
 {
 	swp_list	*to_push;
 
@@ -148,9 +82,9 @@ int	set_allindex(swp_list *a, swp_list *b)
 	}
 	while (b)
 	{
-                b->index = find_index(head_b, b);
-                b = b->next;
-        }
+		b->index = find_index(head_b, b);
+		b = b->next;
+	}
 	return (0);
 }
 
@@ -173,9 +107,9 @@ int	set_cheapest(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int     init_nodes(swp_list **a, swp_list **b)
+int	init_nodes(swp_list **a, swp_list **b)
 {
-        find_target(*a, *b);
+	find_target(*a, *b);
 	set_allindex(*a, *b);
 	push_cost(*a, *b);
 	set_cheapest(*a, *b);
@@ -198,7 +132,8 @@ int     main(int argc, char **argv)
         *b = NULL;
 
         cr_stacks(a, b, argc, argv);
-        ft_lstadd_back(b, ft_lstnew(8));//adding elements in stack b for test
+        ft_lstadd_back(b, ft_lstnew(8));
+//adding elements in stack b for test
         ft_lstadd_back(b, ft_lstnew(12));
 	ft_lstadd_back(b, ft_lstnew(15));
 	printf("%i args\n", argc); // to suppress
@@ -208,7 +143,11 @@ int     main(int argc, char **argv)
 	printf("init_nodes executed\n");    
 	while (*a)
         {
-                printf("number = %li:\ntarget node = %li\nindexa = %i\nindexb = %i\npush_cost = %i\nis_cheapest = %i\n\n", (*a)->nbr, (*a)->target->nbr, (*a)->index, (*a)->target->index, (*a)->push_cost, (*a)->is_cheapest);//testing target nodes
+                printf("number = %li:\ntarget node = %li\n
+		indexa = %i\nindexb = %i\npush_cost = %i\n
+		is_cheapest = %i\n\n", (*a)->nbr, (*a)->target->nbr,
+		(*a)->index, (*a)->target->index, (*a)->push_cost,
+		(*a)->is_cheapest);//testing target nodes
                 *a = (*a)->next;
         }
         while (*b)
