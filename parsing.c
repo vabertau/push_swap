@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 11:57:51 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:57:11 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	overflow(char **splitted)
 int	check_1argorempty(int argc, char **argv)
 {
 	if (argc == 1)
-	{
-		write(2, "Error\n", 6);
 		return (-1);
-	}
 	if (argc == 2)
 	{
 		if (argv[1][0] == '\0')

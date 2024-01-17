@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:29 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 12:19:39 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:58:27 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ int	free_doubletab(char **tab)
 	return (0);
 }
 
-int     free_list(t_swp_list **a)
+int	free_list(t_swp_list **a)
 {
-	t_swp_list	**tmp;
-	t_swp_list	**cursor;
+	t_swp_list	*tmp;
+	t_swp_list	*cursor;
 
-	cursor = a;
-	while ((*cursor))
+	cursor = *a;
+	while (cursor)
 	{
 		tmp = cursor;
-		cursor = &(*cursor)->next;
-		free(*tmp);
+		cursor = cursor->next;
+		free(tmp);
 	}
 	free(a);
-        return (0);
+	return (0);
 }

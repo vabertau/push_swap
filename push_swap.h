@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 12:12:22 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:05:04 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			ft_atol(const char *nptr);
 int			howmany_instack(t_swp_list *a);
 int			free_doubletab(char **tab);
 int			free_list(t_swp_list **a);
+
 // Stack manipulation
 
 int			howmany_instack(t_swp_list *a);
@@ -72,6 +73,7 @@ int			cr_stacks(t_swp_list **a, t_swp_list **b, int argc, char **argv);
 int			stack_sorted(t_swp_list *a);
 int			init_nodes(t_swp_list **a, t_swp_list **b);
 int			minus_tobottom(t_swp_list **a);
+int			cr_lists(t_swp_list ***a, t_swp_list ***b);
 
 // Operations executers
 
