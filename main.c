@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:13:22 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 14:51:34 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:08:11 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (parsing(argc, argv) == -1)
 		return (free_list(a), free_list(b), -1);
 	cr_stacks(a, b, argc, argv);
-	if (howmany_instack(*a) == 1 || stack_sorted(*a))
+	if (howmany_instack(*a) == 1 /*|| stack_sorted(*a)*/)
 		return (free_list(a), free_list(b), 0);
 	if (howmany_instack(*a) == 2)
 	{

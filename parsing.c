@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 13:57:11 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:09:51 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	parsing(int argc, char **argv)
 	error = 0;
 	if (check_1argorempty(argc, argv) == -1)
 		return (-1);
-	splitted = ft_split(argv[1], 2);
+	splitted = ft_split(argv[1], ' ');
 	if (argc == 2)
 	{
 		if (duplicates(splitted) || error_notint(splitted)
