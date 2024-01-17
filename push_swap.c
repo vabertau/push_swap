@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:30 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 14:13:21 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:25:44 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	free_tabs(char **split_sep, long *sep_long, char **argv)
 
 int	cr_lists(t_swp_list ***a, t_swp_list ***b)
 {
-        *a = malloc(sizeof(t_swp_list *));
-        if (!(*a))
+	*a = malloc(sizeof(t_swp_list *));
+	if (!(*a))
 		return (-1);
 	*b = malloc(sizeof(t_swp_list *));
 	if (!(*b))
 		return (free(*a), -1);
-        **a = NULL;
-        **b = NULL;
+	**a = NULL;
+	**b = NULL;
 	return (0);
 }
 
