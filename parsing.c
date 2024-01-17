@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:40:29 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:57:51 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	parsing(int argc, char **argv)
 	if (error == 1)
 	{
 		write(2, "Error\n", 6);
-		return (free(splitted), -1);
+		return (free_doubletab(splitted), -1);
 	}
-	return (free(splitted), 0);
+	return (free_doubletab(splitted), 0);
 }

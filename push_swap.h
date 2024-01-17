@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 11:38:43 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:12:22 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ t_swp_list	*find_biggest(t_swp_list *a);
 int			find_index(t_swp_list *a, t_swp_list *needle);
 int			ft_atol(const char *nptr);
 int			howmany_instack(t_swp_list *a);
-
+int			free_doubletab(char **tab);
+int			free_list(t_swp_list **a);
 // Stack manipulation
 
 int			howmany_instack(t_swp_list *a);
