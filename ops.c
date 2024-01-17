@@ -6,16 +6,16 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:35:11 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:21:41 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:36:58 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rab(swp_list **a, int print)
+int	rab(t_swp_list **a, int print)
 {
-	swp_list	*tail;
-	swp_list	*tmp;
+	t_swp_list	*tail;
+	t_swp_list	*tmp;
 
 	tmp = *a;
 	*a = (*a)->next;
@@ -31,7 +31,7 @@ int	rab(swp_list **a, int print)
 	return (0);
 }
 
-int	rr(swp_list **a, swp_list **b)
+int	rr(t_swp_list **a, t_swp_list **b)
 {
 	rab(a, 0);
 	rab(b, 0);
@@ -39,10 +39,10 @@ int	rr(swp_list **a, swp_list **b)
 	return (0);
 }
 
-int	rrab(swp_list **a, int op)
+int	rrab(t_swp_list **a, int op)
 {
-	swp_list	*tail;
-	swp_list	*pretail;
+	t_swp_list	*tail;
+	t_swp_list	*pretail;
 
 	tail = *a;
 	while (tail->next != NULL)
@@ -60,7 +60,7 @@ int	rrab(swp_list **a, int op)
 	return (0);
 }
 
-int	rrr(swp_list **a, swp_list **b)
+int	rrr(t_swp_list **a, t_swp_list **b)
 {
 	rrab(a, 0);
 	rrab(b, 0);
@@ -68,10 +68,10 @@ int	rrr(swp_list **a, swp_list **b)
 	return (0);
 }
 
-int	sab(swp_list **a, int op)
+int	sab(t_swp_list **a, int op)
 {
-	swp_list	*tmp;
-	swp_list	*tmp2;
+	t_swp_list	*tmp;
+	t_swp_list	*tmp2;
 
 	tmp = *a;
 	tmp2 = (*a)->next->next;
@@ -91,12 +91,12 @@ int	sab(swp_list **a, int op)
 
 int     main(int argc, char **argv)
 {
-        swp_list        **a;
-        swp_list        **b;
-	swp_list	*tmp;
+        t_swp_list        **a;
+        t_swp_list        **b;
+	t_swp_list	*tmp;
 
-        a = malloc(sizeof(swp_list *));
-        b = malloc(sizeof(swp_list *));
+        a = malloc(sizeof(t_swp_list *));
+        b = malloc(sizeof(t_swp_list *));
         *a = NULL;
         *b = NULL;
 

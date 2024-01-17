@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:53:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 20:10:52 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:35:45 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	bexec_rarb(swp_list **b, swp_list **to_push, swp_list **a)
+int	bexec_rarb(t_swp_list **b, t_swp_list **to_push, t_swp_list **a)
 {
 	int	i;
 
@@ -39,9 +39,9 @@ int	bexec_rarb(swp_list **b, swp_list **to_push, swp_list **a)
 	return (0);
 }
 
-int	bexec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bexec_rarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
-	swp_list	*tail_b;
+	t_swp_list	*tail_b;
 	int			rev_indexb;
 	int			i;
 
@@ -68,9 +68,9 @@ int	bexec_rarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	bexec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bexec_rrarb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
-	swp_list	*tail_a;
+	t_swp_list	*tail_a;
 	int			rev_indexa;
 	int			i;
 
@@ -97,9 +97,9 @@ int	bexec_rrarb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	exec_1btoa(swp_list **a, swp_list **b)
+int	exec_1btoa(t_swp_list **a, t_swp_list **b)
 {
-	swp_list	*to_push;
+	t_swp_list	*to_push;
 
 	to_push = *b;
 	binit_nodes(a, b);
@@ -122,7 +122,7 @@ int	exec_1btoa(swp_list **a, swp_list **b)
 	return (0);
 }
 
-int	exec_allbtoa(swp_list **a, swp_list **b)
+int	exec_allbtoa(t_swp_list **a, t_swp_list **b)
 {
 	while (howmany_instack(*b))
 		exec_1btoa(a, b);

@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:30 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:44:59 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:37:20 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_tabs(char **split_sep, long *sep_long, char **argv)
 	free (sep_long);
 }
 
-int	cr_stacks(swp_list **a, swp_list **b, int argc, char **argv)
+int	cr_stacks(t_swp_list **a, t_swp_list **b, int argc, char **argv)
 {
 	char	**split_sep;
 	long	*sep_long;
@@ -67,11 +67,11 @@ int	cr_stacks(swp_list **a, swp_list **b, int argc, char **argv)
 /*
 int	main(int argc, char **argv)
 {
-	swp_list	**a;
-	swp_list	**b;
+	t_swp_list	**a;
+	t_swp_list	**b;
 	
-	a = malloc(sizeof(swp_list *));
-	b = malloc(sizeof(swp_list *));
+	a = malloc(sizeof(t_swp_list *));
+	b = malloc(sizeof(t_swp_list *));
 	*a = NULL;
 	*b = NULL;
 	//long	parsed_args[] = {1, 2, 3, 4}; //to test

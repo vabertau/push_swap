@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:17:13 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 14:55:33 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:35:03 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	pc_rarb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 {
 	int	pc;
 
@@ -23,10 +23,10 @@ int	pc_rarb(swp_list *a, swp_list *to_push, swp_list *b)
 	return (pc);
 }
 
-int	pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rrarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 {
-	swp_list	*tail_a;
-	swp_list	*tail_b;
+	t_swp_list	*tail_a;
+	t_swp_list	*tail_b;
 	int			rev_indexa;
 	int			rev_indexb;
 
@@ -50,10 +50,10 @@ int	pc_rrarrb(swp_list *a, swp_list *to_push, swp_list *b)
 		return (rev_indexb + 1);
 }
 
-int	pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 {
 	int			rev_indexb;
-	swp_list	*tail_b;
+	t_swp_list	*tail_b;
 
 	tail_b = b;
 	while (tail_b->next)
@@ -64,10 +64,10 @@ int	pc_rarrb(swp_list *a, swp_list *to_push, swp_list *b)
 	return (to_push->index + rev_indexb + 1);
 }
 
-int	pc_rrarb(swp_list *a, swp_list *to_push, swp_list *b)
+int	pc_rrarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 {
 	int			rev_indexa;
-	swp_list	*tail_a;
+	t_swp_list	*tail_a;
 
 	tail_a = a;
 	while (tail_a->next)

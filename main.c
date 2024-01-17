@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:13:22 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:14:45 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:36:32 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	swp_list	**a;
-	swp_list	**b;
-	swp_list	*tmp;
+	t_swp_list	**a;
+	t_swp_list	**b;
+	t_swp_list	*tmp;
 
-	a = malloc(sizeof(swp_list *));
-	b = malloc(sizeof(swp_list *));
+	a = malloc(sizeof(t_swp_list *));
+	b = malloc(sizeof(t_swp_list *));
 	*a = NULL;
 	*b = NULL;
 	if (parsing(argc, argv) == -1)

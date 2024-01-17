@@ -6,16 +6,16 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:28:07 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:16:53 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:36:41 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	minus_tobottom(swp_list **a)
+int	minus_tobottom(t_swp_list **a)
 {
-	swp_list	*lowest;
-	swp_list	*tail_a;
+	t_swp_list	*lowest;
+	t_swp_list	*tail_a;
 	int			i;
 	int			index_lowest;
 	int			rev_indexlowest;

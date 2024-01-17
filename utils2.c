@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:29 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:54:30 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:37:41 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	howmany_instack(swp_list *a)
+int	howmany_instack(t_swp_list *a)
 {
 	int	count;
 

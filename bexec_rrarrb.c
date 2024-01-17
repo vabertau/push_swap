@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:21:26 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 18:52:03 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:34:37 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	bindex00_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bindex00_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	if ((*to_push)->index == 0 && (*to_push)->target->index == 0)
 	{
@@ -22,7 +22,7 @@ int	bindex00_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	bindex01_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bindex01_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexa;
@@ -42,7 +42,7 @@ int	bindex01_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	bindex10_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bindex10_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexb;
@@ -62,7 +62,7 @@ int	bindex10_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	bindex11_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bindex11_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexa;
@@ -91,7 +91,7 @@ int	bindex11_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (1);
 }
 
-int	bexec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	bexec_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexa;

@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:04:35 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:48:02 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:37:30 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sort2(swp_list **a)
+int	sort2(t_swp_list **a)
 {
 	if ((*a)->nbr > (*a)->next->nbr)
 	{
@@ -21,7 +21,7 @@ int	sort2(swp_list **a)
 	return (0);
 }
 
-int	sort3(swp_list **a)
+int	sort3(t_swp_list **a)
 {
 	if (((*a)->nbr > (*a)->next->nbr)
 		&& ((*a)->nbr > (*a)->next->next->nbr))
@@ -40,7 +40,7 @@ int	sort3(swp_list **a)
 	return (0);
 }
 
-int	stack_sorted(swp_list *a)
+int	stack_sorted(t_swp_list *a)
 {
 	while (a->next)
 	{
@@ -52,7 +52,7 @@ int	stack_sorted(swp_list *a)
 	return (1);
 }
 
-int	sortbig(swp_list **a, swp_list **b)
+int	sortbig(t_swp_list **a, t_swp_list **b)
 {
 	int	hm_is;
 
@@ -71,7 +71,7 @@ int	sortbig(swp_list **a, swp_list **b)
 	return (0);
 }
 
-int	sortall(swp_list **a, swp_list **b)
+int	sortall(t_swp_list **a, t_swp_list **b)
 {
 	int	hm_is;
 

@@ -6,15 +6,15 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:13:08 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 14:50:22 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:34:51 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-swp_list	*find_lowest(swp_list *a)
+t_swp_list	*find_lowest(t_swp_list *a)
 {
-	swp_list	*ret;
+	t_swp_list	*ret;
 
 	ret = a;
 	while (a)
@@ -26,9 +26,9 @@ swp_list	*find_lowest(swp_list *a)
 	return (ret);
 }
 
-int	bfind_target(swp_list *a, swp_list *b)
+int	bfind_target(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*tmp;
+	t_swp_list	*tmp;
 
 	tmp = a;
 	while (b)
@@ -53,9 +53,9 @@ int	bfind_target(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	bpush_cost(swp_list *a, swp_list *b)
+int	bpush_cost(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*to_push;
+	t_swp_list	*to_push;
 
 	to_push = b;
 	while (to_push)
@@ -82,7 +82,7 @@ int	bpush_cost(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	binit_nodes(swp_list **a, swp_list **b)
+int	binit_nodes(t_swp_list **a, t_swp_list **b)
 {
 	bfind_target(*a, *b);
 	set_allindex(*a, *b);

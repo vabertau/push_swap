@@ -6,15 +6,15 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:10:45 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 18:17:44 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:35:32 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	exec_1atob(swp_list **a, swp_list **b)
+int	exec_1atob(t_swp_list **a, t_swp_list **b)
 {
-	swp_list	*to_push;
+	t_swp_list	*to_push;
 
 	to_push = *a;
 	init_nodes(a, b);
@@ -37,7 +37,7 @@ int	exec_1atob(swp_list **a, swp_list **b)
 	return (0);
 }
 
-int	exec_allatob(swp_list **a, swp_list **b)
+int	exec_allatob(t_swp_list **a, t_swp_list **b)
 {
 	if (howmany_instack(*a) > 3)
 		pb(a, b);
@@ -50,12 +50,12 @@ int	exec_allatob(swp_list **a, swp_list **b)
 /*
 int     main(int argc, char **argv)
 {
-	swp_list        **a;
-        swp_list        **b;
-        swp_list        *tmp;
+	t_swp_list        **a;
+        t_swp_list        **b;
+        t_swp_list        *tmp;
 
-        a = malloc(sizeof(swp_list *));
-        b = malloc(sizeof(swp_list *));
+        a = malloc(sizeof(t_swp_list *));
+        b = malloc(sizeof(t_swp_list *));
         *a = NULL;
         *b = NULL;
 

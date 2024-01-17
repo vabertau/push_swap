@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:11 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:03:04 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:35:55 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	index00_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	index00_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	if ((*to_push)->index == 0 && (*to_push)->target->index == 0)
 	{
@@ -22,11 +22,11 @@ int	index00_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	index01_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	index01_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int			i;
 	int			rev_indexb;
-	swp_list	*tail_b;
+	t_swp_list	*tail_b;
 
 	i = 0;
 	tail_b = *b;
@@ -46,11 +46,11 @@ int	index01_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	index10_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	index10_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int			i;
 	int			rev_indexa;
-	swp_list	*tail_a;
+	t_swp_list	*tail_a;
 
 	i = 0;
 	tail_a = *a;
@@ -70,7 +70,7 @@ int	index10_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (0);
 }
 
-int	index11_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	index11_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexa;
@@ -97,7 +97,7 @@ int	index11_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
 	return (1);
 }
 
-int	exec_rrarrb(swp_list **a, swp_list **to_push, swp_list **b)
+int	exec_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b)
 {
 	int	i;
 	int	rev_indexa;

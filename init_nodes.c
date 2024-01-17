@@ -6,15 +6,15 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:54:58 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/16 19:10:40 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:36:02 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_target(swp_list *a, swp_list *b)
+int	find_target(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*tmp;
+	t_swp_list	*tmp;
 
 	tmp = b;
 	while (a)
@@ -39,9 +39,9 @@ int	find_target(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	push_cost(swp_list *a, swp_list *b)
+int	push_cost(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*to_push;
+	t_swp_list	*to_push;
 
 	to_push = a;
 	while (to_push)
@@ -68,10 +68,10 @@ int	push_cost(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	set_allindex(swp_list *a, swp_list *b)
+int	set_allindex(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*head_a;
-	swp_list	*head_b;
+	t_swp_list	*head_a;
+	t_swp_list	*head_b;
 
 	head_a = a;
 	head_b = b;
@@ -88,9 +88,9 @@ int	set_allindex(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	set_cheapest(swp_list *a, swp_list *b)
+int	set_cheapest(t_swp_list *a, t_swp_list *b)
 {
-	swp_list	*tmp;
+	t_swp_list	*tmp;
 
 	tmp = a;
 	a->is_cheapest = 1;
@@ -107,7 +107,7 @@ int	set_cheapest(swp_list *a, swp_list *b)
 	return (0);
 }
 
-int	init_nodes(swp_list **a, swp_list **b)
+int	init_nodes(t_swp_list **a, t_swp_list **b)
 {
 	find_target(*a, *b);
 	set_allindex(*a, *b);
@@ -122,12 +122,12 @@ int	init_nodes(swp_list **a, swp_list **b)
 
 int     main(int argc, char **argv)
 {
-        swp_list        **a;
-        swp_list        **b;
-        swp_list        *tmp;
+        t_swp_list        **a;
+        t_swp_list        **b;
+        t_swp_list        *tmp;
 
-        a = malloc(sizeof(swp_list *));
-        b = malloc(sizeof(swp_list *));
+        a = malloc(sizeof(t_swp_list *));
+        b = malloc(sizeof(t_swp_list *));
         *a = NULL;
         *b = NULL;
 
