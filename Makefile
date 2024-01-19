@@ -6,17 +6,13 @@
 #    By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/26 14:58:14 by vabertau          #+#    #+#              #
-#    Updated: 2024/01/16 19:50:27 by vabertau         ###   ########.fr        #
+#    Updated: 2024/01/17 16:56:46 by vabertau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ADD FLAGS REMOVE -g REMOVE TESTOPS
-
 NAME=push_swap
 
-CC= cc -g
-
-TESTOPS=test_ops
+CC= cc $(FLAGS)
 
 FLAGS=-Wall -Werror -Wextra
 
@@ -28,10 +24,7 @@ OBJS=$(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
 $(NAME): $(LIBFT) $(OBJS)
-	cc -g $(OBJS) ./libft/libft.a -o $(NAME)
-
-$(TESTOPS):
-	cc -g ops.c lst.c push_swap.c sorting.c libft/ft_split.c libft/ft_substr.c libft/ft_strlen.c libft/ft_strdup.c -o test_ops
+	cc $(FLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
 
 $(LIBFT):
 	make -C libft all
@@ -47,4 +40,3 @@ fclean: clean
 re: fclean all
 
 all: $(NAME)
-	

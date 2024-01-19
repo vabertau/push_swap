@@ -6,13 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:40:06 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 11:34:06 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:46:17 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	bpc_rarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
+int	bpc_rarb(t_swp_list *to_push)
 {
 	int	pc;
 
@@ -50,7 +50,7 @@ int	bpc_rrarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 		return (rev_indexb + 1);
 }
 
-int	bpc_rarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
+int	bpc_rarrb(t_swp_list *to_push, t_swp_list *b)
 {
 	int			rev_indexb;
 	t_swp_list	*tail_b;
@@ -64,7 +64,7 @@ int	bpc_rarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
 	return (to_push->target->index + rev_indexb + 1);
 }
 
-int	bpc_rrarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b)
+int	bpc_rrarb(t_swp_list *a, t_swp_list *to_push)
 {
 	int			rev_indexa;
 	t_swp_list	*tail_a;

@@ -6,20 +6,13 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:30 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 14:25:44 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:55:23 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 #include <stdio.h>
-
-int	check_input(int argc, char **argv)
-{
-	if (argc == 1)
-		return (write(2, "Error \n", 7), -1);
-	return (0);
-}
 
 void	free_tabs(char **split_sep, long *sep_long, char **argv)
 {
@@ -51,7 +44,7 @@ int	cr_lists(t_swp_list ***a, t_swp_list ***b)
 	return (0);
 }
 
-int	cr_stacks(t_swp_list **a, t_swp_list **b, int argc, char **argv)
+int	cr_stacks(t_swp_list **a, int argc, char **argv)
 {
 	char	**split_sep;
 	long	*sep_long;

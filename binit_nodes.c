@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:13:08 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 11:34:51 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:53:29 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,21 @@ int	bpush_cost(t_swp_list *a, t_swp_list *b)
 	to_push = b;
 	while (to_push)
 	{
-		to_push->push_cost = bpc_rarb(a, to_push, b);
+		to_push->push_cost = bpc_rarb(to_push);
 		to_push->op = 1;
 		if (bpc_rrarrb(a, to_push, b) < to_push->push_cost)
 		{
 			to_push->push_cost = bpc_rrarrb(a, to_push, b);
 			to_push->op = 2;
 		}
-		if (bpc_rarrb(a, to_push, b) < to_push->push_cost)
+		if (bpc_rarrb(to_push, b) < to_push->push_cost)
 		{
-			to_push->push_cost = bpc_rarrb(a, to_push, b);
+			to_push->push_cost = bpc_rarrb(to_push, b);
 			to_push->op = 3;
 		}
-		if (bpc_rrarb(a, to_push, b) < to_push->push_cost)
+		if (bpc_rrarb(a, to_push) < to_push->push_cost)
 		{
-			to_push->push_cost = bpc_rrarb(a, to_push, b);
+			to_push->push_cost = bpc_rrarb(a, to_push);
 			to_push->op = 4;
 		}
 		to_push = to_push->next;
@@ -87,6 +87,6 @@ int	binit_nodes(t_swp_list **a, t_swp_list **b)
 	bfind_target(*a, *b);
 	set_allindex(*a, *b);
 	bpush_cost(*a, *b);
-	set_cheapest(*b, *a);
+	set_cheapest(*b);
 	return (0);
 }

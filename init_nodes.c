@@ -6,7 +6,7 @@
 /*   By: vabertau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:54:58 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 11:36:02 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:14:54 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ int	push_cost(t_swp_list *a, t_swp_list *b)
 	to_push = a;
 	while (to_push)
 	{
-		to_push->push_cost = pc_rarb(a, to_push, b);
+		to_push->push_cost = pc_rarb(to_push);
 		to_push->op = 1;
 		if (pc_rrarrb(a, to_push, b) < to_push->push_cost)
 		{
 			to_push->push_cost = pc_rrarrb(a, to_push, b);
 			to_push->op = 2;
 		}
-		if (pc_rarrb(a, to_push, b) < to_push->push_cost)
+		if (pc_rarrb(to_push, b) < to_push->push_cost)
 		{
-			to_push->push_cost = pc_rarrb(a, to_push, b);
+			to_push->push_cost = pc_rarrb(to_push, b);
 			to_push->op = 3;
 		}
-		if (pc_rrarb(a, to_push, b) < to_push->push_cost)
+		if (pc_rrarb(a, to_push) < to_push->push_cost)
 		{
-			to_push->push_cost = pc_rrarb(a, to_push, b);
+			to_push->push_cost = pc_rrarb(a, to_push);
 			to_push->op = 4;
 		}
 		to_push = to_push->next;
@@ -88,7 +88,7 @@ int	set_allindex(t_swp_list *a, t_swp_list *b)
 	return (0);
 }
 
-int	set_cheapest(t_swp_list *a, t_swp_list *b)
+int	set_cheapest(t_swp_list *a)
 {
 	t_swp_list	*tmp;
 
@@ -112,7 +112,7 @@ int	init_nodes(t_swp_list **a, t_swp_list **b)
 	find_target(*a, *b);
 	set_allindex(*a, *b);
 	push_cost(*a, *b);
-	set_cheapest(*a, *b);
+	set_cheapest(*a);
 	return (0);
 }
 

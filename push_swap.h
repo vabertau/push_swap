@@ -6,7 +6,7 @@
 /*   By: vabertau <vabertau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:14:50 by vabertau          #+#    #+#             */
-/*   Updated: 2024/01/17 14:05:04 by vabertau         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:05:48 by vabertau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			sort3(t_swp_list **a);
 int			set_allindex(t_swp_list *a, t_swp_list *b);
 int			push_cost(t_swp_list *a, t_swp_list *b);
 int			binit_nodes(t_swp_list **a, t_swp_list **b);
-int			set_cheapest(t_swp_list *a, t_swp_list *b);
+int			set_cheapest(t_swp_list *a);
 
 // Utils
 
@@ -69,7 +69,7 @@ int			free_list(t_swp_list **a);
 // Stack manipulation
 
 int			howmany_instack(t_swp_list *a);
-int			cr_stacks(t_swp_list **a, t_swp_list **b, int argc, char **argv);
+int			cr_stacks(t_swp_list **a, int argc, char **argv);
 int			stack_sorted(t_swp_list *a);
 int			init_nodes(t_swp_list **a, t_swp_list **b);
 int			minus_tobottom(t_swp_list **a);
@@ -96,14 +96,14 @@ int			bexec_rrarrb(t_swp_list **a, t_swp_list **to_push, t_swp_list **b);
 
 // Push_cost based on ops choice
 
-int			pc_rarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
+int			pc_rarb(t_swp_list *to_push);
 int			pc_rrarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
-int			pc_rarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
-int			pc_rrarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
+int			pc_rarrb(t_swp_list *to_push, t_swp_list *b);
+int			pc_rrarb(t_swp_list *a, t_swp_list *to_push);
 
-int			bpc_rarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
+int			bpc_rarb(t_swp_list *to_push);
 int			bpc_rrarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
-int			bpc_rarrb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
-int			bpc_rrarb(t_swp_list *a, t_swp_list *to_push, t_swp_list *b);
+int			bpc_rarrb(t_swp_list *to_push, t_swp_list *b);
+int			bpc_rrarb(t_swp_list *a, t_swp_list *to_push);
 
 #endif
