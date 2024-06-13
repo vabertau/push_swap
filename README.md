@@ -2,10 +2,10 @@ push_swap's objective is to sort data on a stack with a limited set of instructi
 number of actions.
 
 Game Rules:
-    The game involves two stacks, named “a” and “b.”
-    Stack “a” contains a random number of positive or negative integers without duplicates.
-    Stack “b” starts empty.
-    The goal is to sort the numbers in ascending order on stack “a.”
+The game involves two stacks, named “a” and “b.”
+Stack “a” contains a random number of positive or negative integers without duplicates.
+Stack “b” starts empty.
+The goal is to sort the numbers in ascending order on stack “a.”
   
 Available Operations:
     sa: Swap the first two elements at the top of stack “a.”
