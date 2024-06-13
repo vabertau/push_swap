@@ -2,6 +2,7 @@ push_swap's objective is to sort data on a stack with a limited set of instructi
 number of actions.
 
 Game Rules:
+
 The game involves two stacks, named “a” and “b.”
 
 Stack “a” contains a random number of positive or negative integers without duplicates.
